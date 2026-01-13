@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+beanie==1.25.0
+motor==3.3.2
+pymongo==4.6.3
+pydantic
+pydantic-settings
+python-multipart
+email-validator
+passlib[bcrypt]
+bcrypt==4.0.1
+python-jose[cryptography]
+python-dotenv
+fastapi-mail
+gunicorn
+uvicorn
