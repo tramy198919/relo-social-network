@@ -21,6 +21,7 @@ async def lifespan(app: FastAPI):
     app.mongodb_client = AsyncIOMotorClient(settings.MONGODB_URL)
     app.mongodb_db = app.mongodb_client[settings.MONGODB_DB_NAME]
     
+    print(f"Connecting to MongoDB at: {settings.MONGODB_URL.split('@')[-1]}") # Log host only for safety
     await init_beanie(
         database=app.mongodb_db,
         document_models=[
@@ -33,7 +34,8 @@ async def lifespan(app: FastAPI):
             Comment
         ]
     )
-    print("Database connected!")
+    print("Beanie initialized successfully!")
+    print("Database connected and app is ready!")
     yield
     # Shutdown
     app.mongodb_client.close()
